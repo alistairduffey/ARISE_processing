@@ -1,5 +1,7 @@
 Main.ipynb contains code to process ARISE, ssp245 and PiControl runs in UKESM1 into maps showing the ensemble and time means (+standard deviations). It outputs small .nc files containing a set of spatially resolved means and standard deviations variables to /Output_data. For each scenario, we output .nc files containing each the mean state under a given 20-year time-window, both for the full annual data, ('all'), and for individual seasons. This gives 10 files per scenario (4 seasons + annual, for mean and std. There are two outputs for SSP245: the first is the baseline, the second is the warmer world without SAI (i.e. SSP245 scenario at the same time period which we use for assessing ARISE (2050-2069).  
 
+Additional maximum pr data is created by Add_daily_vars.py (the same as Add_daily_vars.ipynb), see below for more details on this.  
+
 * SSP245_baseline: the target state ARISE aims for, i.e. the 20-year period from the concatenated historical and SSP2-4.5 runs with mean temperature closest to 1.5C above pre-industrial (2013-2022). We use only the 5 ensemble members from which the ARISE runs branch.
 * Preindustrial: the PiControl run output. In this case only one (long) ensemble member is available. To keep this consistent with the other scenarios, for which we have 5 ensemble members x 20-year periods, we use the first 100 years of this only. 
 * ARISE: the SAI scenario. finishes at end 2069, so we use the final 20 years as a our SAI assessment period. 
@@ -22,6 +24,8 @@ The processing chain to produce these output data for ARISE and SSP2-4.5 is as f
 Note that for tasmax and tasmin, the resampling process takes the max and min, respectively, rather than the mean. So the final data represents to the 20-year mean (or STD) of the annual/seasonal maximum for each year. 
 
 The pre-industrial baseline (piControl) follows a similar set of steps, except it uses only 1 ensemble member, from which we take a 100 year extract over which we calculate the mean and std, for consistency with the other scenarios. 
+
+In the ARISE/, SSP245/, and SSP245_baseline/ directories, there are also files named e.g. "pr_max_ARISE_all_mean.nc". These contain the max precipitation data, calculated as means or standard deviations over 5 ensemble members and 20 years, of the maximum 1-day precipitation recorded over each season/year in each grid cell. 
 
 
 References:
